@@ -149,7 +149,7 @@ export function FeaturedLessons() {
             size="lg"
             variant="outline"
             onClick={() => router.push('/toc')}
-            className="group"
+            className="group border-2 border-primary/30 bg-background text-foreground hover:bg-primary/10 hover:border-primary/50 dark:bg-background/80 dark:text-foreground"
           >
             Tüm Dersleri Görüntüle
             <ArrowRight className="ms-2 size-4 transition-transform group-hover:translate-x-1" />

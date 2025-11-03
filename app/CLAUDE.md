@@ -315,7 +315,7 @@ export const colors = {
 </motion.h1>
 
 <motion.p className="...">
-  Neoesis is an intelligent learning platform...  {/* Burası değişebilir */}
+  Neosis is an intelligent learning platform...  {/* Burası değişebilir */}
 </motion.p>
 // AI:SAFE-EDIT END
 ```
@@ -325,14 +325,14 @@ export const colors = {
 **Header:** `src/components/layout/Header.tsx`
 ```tsx
 // AI:SAFE-EDIT START - Logo and brand name
-<span className="text-xl">Neoesis</span>  {/* Marka adı */}
+<span className="text-xl">Neosis</span>  {/* Marka adı */}
 // AI:SAFE-EDIT END
 ```
 
 **Footer:** `src/components/layout/Footer.tsx`
 ```tsx
 // AI:SAFE-EDIT START - Brand and tagline
-<span className="text-2xl font-bold">Neoesis</span>
+<span className="text-2xl font-bold">Neosis</span>
 <p className="...">
   An intelligent learning platform...  {/* Tagline */}
 </p>

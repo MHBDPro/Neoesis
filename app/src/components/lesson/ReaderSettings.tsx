@@ -86,6 +86,14 @@ export function ReaderSettings({ onSettingsChange, className }: ReaderSettingsPr
       setSettings(newSettings);
       localStorage.setItem('readerSettings', JSON.stringify(newSettings));
       onSettingsChange?.(newSettings);
+
+      // Apply CSS custom properties
+      applyCSSSettings(newSettings);
+
+      // Dispatch custom event for cross-tab/component communication
+      window.dispatchEvent(new CustomEvent('readerSettingsChanged', {
+        detail: newSettings
+      }));
     },
     [settings, onSettingsChange]
   );
@@ -95,6 +103,14 @@ export function ReaderSettings({ onSettingsChange, className }: ReaderSettingsPr
     setSettings(DEFAULT_SETTINGS);
     localStorage.setItem('readerSettings', JSON.stringify(DEFAULT_SETTINGS));
     onSettingsChange?.(DEFAULT_SETTINGS);
+
+    // Apply CSS custom properties
+    applyCSSSettings(DEFAULT_SETTINGS);
+
+    // Dispatch custom event
+    window.dispatchEvent(new CustomEvent('readerSettingsChanged', {
+      detail: DEFAULT_SETTINGS
+    }));
   }, [onSettingsChange]);
 
   return (
@@ -264,19 +280,83 @@ export function ReaderSettings({ onSettingsChange, className }: ReaderSettingsPr
   );
 }
 
+// Helper function to apply CSS custom properties
+function applyCSSSettings(settings: ReaderSettingsConfig) {
+  const root = document.documentElement;
+
+  // Font size
+  const fontSizeMap = {
+    sm: '0.875rem',
+    base: '1rem',
+    lg: '1.125rem',
+    xl: '1.25rem'
+  };
+  root.style.setProperty('--reader-font-size', fontSizeMap[settings.fontSize]);
+
+  // Line height
+  const lineHeightMap = {
+    tight: '1.5',
+    normal: '1.75',
+    relaxed: '2'
+  };
+  root.style.setProperty('--reader-line-height', lineHeightMap[settings.lineHeight]);
+
+  // Theme - apply to html element
+  if (settings.theme === 'dark') {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
+}
+
 // Hook to use reader settings in lesson content
 export function useReaderSettings() {
   const [settings, setSettings] = React.useState<ReaderSettingsConfig>(DEFAULT_SETTINGS);
 
   React.useEffect(() => {
+    // Load initial settings
     const saved = localStorage.getItem('readerSettings');
     if (saved) {
       try {
-        setSettings(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setSettings(parsed);
+        // Apply CSS on initial load
+        applyCSSSettings(parsed);
       } catch {
         // Ignore
       }
+    } else {
+      // Apply default settings
+      applyCSSSettings(DEFAULT_SETTINGS);
     }
+
+    // Listen for settings changes (from same tab or other tabs)
+    const handleSettingsChange = (e: Event) => {
+      const customEvent = e as CustomEvent<ReaderSettingsConfig>;
+      setSettings(customEvent.detail);
+      applyCSSSettings(customEvent.detail);
+    };
+
+    // Listen for localStorage changes from other tabs
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'readerSettings' && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          setSettings(parsed);
+          applyCSSSettings(parsed);
+        } catch {
+          // Ignore
+        }
+      }
+    };
+
+    window.addEventListener('readerSettingsChanged', handleSettingsChange);
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('readerSettingsChanged', handleSettingsChange);
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
   const getProseClasses = React.useCallback(() => {

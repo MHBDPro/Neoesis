@@ -63,7 +63,7 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
 
-  /* Brand & Educational Colors - Neoesis modern professional palette */
+  /* Brand & Educational Colors - Neosis modern professional palette */
   --brand: oklch(0.55 0.15 265);
   --fg-default: oklch(0.2 0 0);
   --bg-default: oklch(1 0 0);
@@ -152,7 +152,7 @@
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
 
-  /* Brand & Educational Colors (Dark) - Neoesis modern professional palette */
+  /* Brand & Educational Colors (Dark) - Neosis modern professional palette */
   --brand: oklch(0.65 0.15 265);
   --fg-default: oklch(0.9 0 0);
   --bg-default: oklch(0.129 0.042 264.695);
@@ -212,6 +212,106 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Reader Settings CSS Variables */
+:root {
+  /* Font Size Presets */
+  --reader-font-size-sm: 0.875rem;    /* 14px */
+  --reader-font-size-base: 1rem;       /* 16px */
+  --reader-font-size-lg: 1.125rem;     /* 18px */
+  --reader-font-size-xl: 1.25rem;      /* 20px */
+
+  /* Line Height Presets */
+  --reader-line-height-tight: 1.5;
+  --reader-line-height-normal: 1.75;
+  --reader-line-height-relaxed: 2;
+
+  /* Active Values */
+  --reader-font-size: var(--reader-font-size-base);
+  --reader-line-height: var(--reader-line-height-normal);
+}
+
+/* Apply Reader Settings to Lesson Content */
+.reader-content {
+  font-size: var(--reader-font-size) !important;
+  line-height: var(--reader-line-height) !important;
+}
+
+/* Apply to all prose elements */
+.reader-content p {
+  font-size: var(--reader-font-size) !important;
+  line-height: var(--reader-line-height) !important;
+}
+
+.reader-content h1 {
+  font-size: calc(var(--reader-font-size) * 2.5) !important;
+  line-height: calc(var(--reader-line-height) * 0.9) !important;
+}
+
+.reader-content h2 {
+  font-size: calc(var(--reader-font-size) * 2) !important;
+  line-height: calc(var(--reader-line-height) * 0.95) !important;
+}
+
+.reader-content h3 {
+  font-size: calc(var(--reader-font-size) * 1.5) !important;
+  line-height: calc(var(--reader-line-height) * 0.95) !important;
+}
+
+.reader-content h4 {
+  font-size: calc(var(--reader-font-size) * 1.25) !important;
+  line-height: var(--reader-line-height) !important;
+}
+
+.reader-content li {
+  font-size: var(--reader-font-size) !important;
+  line-height: var(--reader-line-height) !important;
+}
+
+.reader-content blockquote {
+  font-size: var(--reader-font-size) !important;
+  line-height: var(--reader-line-height) !important;
+}
+
+.reader-content code {
+  font-size: calc(var(--reader-font-size) * 0.875) !important;
+}
+
+.reader-content pre {
+  font-size: calc(var(--reader-font-size) * 0.875) !important;
+}
+
+/* Sepia Theme */
+.reader-theme-sepia {
+  background-color: oklch(0.92 0.02 85) !important;
+  color: oklch(0.35 0.02 85) !important;
+}
+
+.reader-theme-sepia p,
+.reader-theme-sepia h1,
+.reader-theme-sepia h2,
+.reader-theme-sepia h3,
+.reader-theme-sepia h4,
+.reader-theme-sepia h5,
+.reader-theme-sepia h6,
+.reader-theme-sepia li,
+.reader-theme-sepia blockquote {
+  color: oklch(0.35 0.02 85) !important;
+}
+
+.reader-theme-sepia a {
+  color: oklch(0.45 0.08 60) !important;
+}
+
+.reader-theme-sepia code {
+  background-color: oklch(0.88 0.02 85) !important;
+  color: oklch(0.30 0.02 85) !important;
+}
+
+.reader-theme-sepia pre {
+  background-color: oklch(0.88 0.02 85) !important;
+  border-color: oklch(0.80 0.02 85) !important;
 }
 
 /* Cosmic Utility Classes */

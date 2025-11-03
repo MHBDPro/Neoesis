@@ -9,7 +9,7 @@
 
 // AI:SAFE-EDIT START - Color tokens
 export const colors = {
-  // Brand colors - Neoesis modern professional palette
+  // Brand colors - Neosis modern professional palette
   brand: {
     light: 'oklch(0.55 0.15 265)',  // Deep indigo - sophisticated, intellectual
     dark: 'oklch(0.65 0.15 265)',   // Lighter indigo for dark mode

@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { Github, Twitter, Mail } from 'lucide-react';
 import { curriculum } from '@/lessons';
-import { NeoesisLogo } from '@/components/brand/NeoesisLogo';
+import { NeosisLogo } from '@/components/brand/NeosisLogo';
 
 // AI:SAFE-EDIT START - Footer links and social
 const footerLinks = {
@@ -22,7 +22,7 @@ const footerLinks = {
   social: [
     { name: 'GitHub', href: '#', icon: Github },
     { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'Email', href: 'mailto:hello@neoesis.dev', icon: Mail },
+    { name: 'Email', href: 'mailto:hello@neosis.dev', icon: Mail },
   ],
 };
 // AI:SAFE-EDIT END
@@ -44,9 +44,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2">
               <div className="flex size-10 items-center justify-center text-primary">
-                <NeoesisLogo size={40} />
+                <NeosisLogo size={40} />
               </div>
-              <span className="text-2xl font-bold text-foreground">Neoesis</span>
+              <span className="text-2xl font-bold text-foreground">Neosis</span>
             </div>
             <p className="mt-4 max-w-md text-sm text-muted-foreground">
               Size uyum sağlayan akıllı bir öğrenme platformu. Bilgiyi anlayarak kalıcı içgörüye dönüştürün.
@@ -119,7 +119,7 @@ export function Footer() {
         <div className="mt-12 border-t pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Neoesis. Tüm hakları saklıdır.
+              &copy; {currentYear} Neosis. Tüm hakları saklıdır.
             </p>
             <p className="text-sm text-muted-foreground">
               Next.js, TypeScript ve Tailwind CSS ile geliştirilmiştir

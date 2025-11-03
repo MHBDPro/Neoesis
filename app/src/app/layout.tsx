@@ -23,11 +23,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Neoesis - The New Mind of Learning',
-    template: '%s | Neoesis',
+    default: 'Neosis - The New Mind of Learning',
+    template: '%s | Neosis',
   },
   description:
-    'Neoesis is an intelligent learning platform that adapts to you. It doesn\'t just teach — it understands how you learn, guiding you through interactive lessons that turn knowledge into lasting insight.',
+    'Neosis is an intelligent learning platform that adapts to you. It doesn\'t just teach — it understands how you learn, guiding you through interactive lessons that turn knowledge into lasting insight.',
   keywords: [
     'learning',
     'education',
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     'insight',
     'adaptive learning',
   ],
-  authors: [{ name: 'Neoesis Team' }],
-  creator: 'Neoesis',
+  authors: [{ name: 'Neosis Team' }],
+  creator: 'Neosis',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Neoesis',
-    title: 'Neoesis - The New Mind of Learning',
+    siteName: 'Neosis',
+    title: 'Neosis - The New Mind of Learning',
     description:
       'An intelligent learning platform that adapts to you. Transform knowledge into lasting insight through understanding.',
   },
@@ -65,7 +65,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider defaultTheme="light" storageKey="neoesis-theme">
+        <ThemeProvider defaultTheme="light" storageKey="neosis-theme">
           {/* Skip link for accessibility */}
           <a
             href="#main-content"

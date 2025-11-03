@@ -1,5 +1,5 @@
 /**
- * Neoesis Brand Logo
+ * Neosis Brand Logo
  *
  * Modern, geometric logo representing "The New Mind of Learning"
  * Design: Abstract neural network pattern forming an "N"
@@ -8,12 +8,12 @@
 
 import * as React from 'react';
 
-interface NeoesisLogoProps {
+interface NeosisLogoProps {
   className?: string;
   size?: number;
 }
 
-export function NeoesisLogo({ className, size = 32 }: NeoesisLogoProps) {
+export function NeosisLogo({ className, size = 32 }: NeosisLogoProps) {
   return (
     <svg
       width={size}
@@ -22,7 +22,7 @@ export function NeoesisLogo({ className, size = 32 }: NeoesisLogoProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Neoesis Logo"
+      aria-label="Neosis Logo"
     >
       {/* Neural network pattern forming "N" */}
       {/* Left vertical line */}
@@ -77,4 +77,4 @@ export function NeoesisLogo({ className, size = 32 }: NeoesisLogoProps) {
   );
 }
 
-export default NeoesisLogo;
+export default NeosisLogo;

@@ -174,7 +174,7 @@ export function HeroSection() {
             size="lg"
             variant="outline"
             onClick={handleViewCurriculum}
-            className="group border-2 border-primary/20 bg-background/50 px-10 py-7 text-base font-semibold backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg"
+            className="group border-2 border-primary/30 bg-background/90 px-10 py-7 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-primary/10 hover:shadow-lg dark:bg-background/70 dark:text-foreground"
           >
             <span className="flex items-center gap-2">
               <BookOpen className="size-5" />

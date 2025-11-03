@@ -4,13 +4,15 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { ObjectivesPanel } from './ObjectivesPanel';
 import { ReadingProgress } from './ReadingProgress';
 import { Quiz } from './Quiz';
 import { FocusMode } from './FocusMode';
-import { ReaderSettings } from './ReaderSettings';
+import { ReaderSettings, useReaderSettings } from './ReaderSettings';
 import { StickyTOC } from './StickyTOC';
 import { LessonNav } from './LessonNav';
+import { NavButtons } from './NavButtons';
 import { NotesPanel } from './notes/NotesPanel';
 import { TextHighlighter } from './notes/TextHighlighter';
 import { useLessonTimer } from '@/hooks/use-lesson-timer';
@@ -51,6 +53,9 @@ export function LessonLayout({
   const [focusModeActive, setFocusModeActive] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
+  // Reader settings hook
+  const { settings, getProseClasses, getContentWidthClass } = useReaderSettings();
+
   // Start 30-second timer for "in_progress" status
   useLessonTimer(lesson.meta.slug);
 
@@ -70,12 +75,30 @@ export function LessonLayout({
       <article
         ref={articleRef}
         data-testid="lesson-content"
-        className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:text-base prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none prose-pre:bg-muted prose-pre:border lg:prose-h1:text-3xl lg:prose-h2:text-2xl lg:prose-h3:text-xl"
+        className={cn(
+          "prose prose-slate max-w-none dark:prose-invert",
+          "prose-headings:font-bold prose-headings:tracking-tight",
+          "prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl",
+          "prose-p:text-base",
+          "prose-a:text-primary prose-a:no-underline hover:prose-a:underline",
+          "prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5",
+          "prose-code:font-mono prose-code:text-sm",
+          "prose-code:before:content-none prose-code:after:content-none",
+          "prose-pre:bg-muted prose-pre:border",
+          "lg:prose-h1:text-3xl lg:prose-h2:text-2xl lg:prose-h3:text-xl",
+          "transition-all duration-300",
+          "reader-content",
+          settings.theme === 'sepia' && 'reader-theme-sepia',
+          getProseClasses()
+        )}
       >
         {children}
       </article>
 
       {lesson.meta.quiz && <Quiz lesson={lesson} />}
+
+      {/* Previous/Next Lesson Navigation */}
+      <NavButtons current={lesson} />
 
       <div ref={lastParagraphRef} className="h-px" aria-hidden="true" />
     </motion.div>
@@ -205,7 +228,10 @@ export function LessonLayout({
         </div>
 
         {/* Main Content */}
-        <div className="mx-auto max-w-3xl">
+        <div className={cn(
+          "mx-auto transition-all duration-300",
+          getContentWidthClass()
+        )}>
           {lessonContent}
         </div>
       </div>

@@ -16,7 +16,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { Menu, PlayCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { curriculum } from '@/lessons';
-import { NeoesisLogo } from '@/components/brand/NeoesisLogo';
+import { NeosisLogo } from '@/components/brand/NeosisLogo';
 
 // AI:SAFE-EDIT START - Navigation items
 const navigation = [
@@ -44,9 +44,9 @@ export function Header() {
           className="flex shrink-0 items-center gap-2 font-bold text-foreground transition-colors hover:text-primary"
         >
           <div className="flex size-8 items-center justify-center text-primary">
-            <NeoesisLogo size={32} />
+            <NeosisLogo size={32} />
           </div>
-          <span className="text-xl">Neoesis</span>
+          <span className="text-xl">Neosis</span>
         </Link>
         {/* AI:SAFE-EDIT END */}
 
