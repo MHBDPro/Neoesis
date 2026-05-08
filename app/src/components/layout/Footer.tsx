@@ -3,9 +3,27 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Github, Twitter, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { curriculum } from '@/lessons';
 import { NeosisLogo } from '@/components/brand/NeosisLogo';
+
+type SocialIconProps = React.SVGProps<SVGSVGElement>;
+
+function GithubIcon(props: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" {...props}>
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1 1.7-.1 2.2-.5.1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5Z" />
+    </svg>
+  );
+}
+
+function TwitterIcon(props: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" {...props}>
+      <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84-8.15-10.66h6.83l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" />
+    </svg>
+  );
+}
 
 // AI:SAFE-EDIT START - Footer links and social
 const footerLinks = {
@@ -20,8 +38,8 @@ const footerLinks = {
     { name: 'Hizmet Koşulları', href: '#' },
   ],
   social: [
-    { name: 'GitHub', href: '#', icon: Github },
-    { name: 'Twitter', href: '#', icon: Twitter },
+    { name: 'GitHub', href: '#', icon: GithubIcon },
+    { name: 'Twitter', href: '#', icon: TwitterIcon },
     { name: 'Email', href: 'mailto:hello@neosis.dev', icon: Mail },
   ],
 };

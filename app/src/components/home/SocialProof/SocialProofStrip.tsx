@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Users, Award, TrendingUp } from 'lucide-react';
 import { AnimatedCounter } from './AnimatedCounter';
 import { StarRating } from './StarRating';
@@ -20,7 +20,7 @@ import { StarRating } from './StarRating';
  * <SocialProofStrip />
  */
 export function SocialProofStrip() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
@@ -32,7 +32,7 @@ export function SocialProofStrip() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };

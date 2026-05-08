@@ -4,7 +4,7 @@ import { z } from 'zod';
  * Quiz score schema (per-quiz attempt tracking)
  */
 export const QuizScoreSchema = z.object({
-  correct: z.boolean({ description: 'Did user answer correctly?' }),
+  correct: z.boolean().describe('Did user answer correctly?'),
   attemptsUsed: z
     .number()
     .int('Attempts used must be an integer')
@@ -16,9 +16,9 @@ export const QuizScoreSchema = z.object({
  * Lesson progress schema (per-lesson tracking)
  */
 export const LessonProgressSchema = z.object({
-  status: z.enum(['not_started', 'in_progress', 'completed'], {
-    description: 'Lesson completion status'
-  }),
+  status: z
+    .enum(['not_started', 'in_progress', 'completed'])
+    .describe('Lesson completion status'),
   lastVisited: z.string().datetime({
     message: 'Last visited must be a valid ISO 8601 timestamp'
   }),

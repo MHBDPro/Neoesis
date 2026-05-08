@@ -24,8 +24,8 @@ export const QuizAnswerSchema = z.object({
  * Returned after quiz answer validation
  */
 export const QuizFeedbackSchema = z.object({
-  correct: z.boolean({ description: 'Was the answer correct?' }),
-  explanation: z.string({ description: 'Explanation of correct answer' }),
+  correct: z.boolean().describe('Was the answer correct?'),
+  explanation: z.string().describe('Explanation of correct answer'),
   attemptsUsed: z.number().int().min(1).max(3),
   attemptsRemaining: z
     .number()

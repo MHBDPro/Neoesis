@@ -44,6 +44,15 @@ export function OrderingQuiz({ quiz, onSubmit, disabled }: OrderingQuizProps) {
     setOrderedItems(shuffled);
   }, [orderedItems]);
 
+  const handleReorder = React.useCallback(
+    (items: OrderingQuizType['items']) => {
+      if (!disabled) {
+        setOrderedItems(items);
+      }
+    },
+    [disabled]
+  );
+
   const handleSubmit = React.useCallback(() => {
     const currentOrder = orderedItems.map((item) => item.id);
     onSubmit(currentOrder);
@@ -78,14 +87,14 @@ export function OrderingQuiz({ quiz, onSubmit, disabled }: OrderingQuizProps) {
       <Reorder.Group
         axis="y"
         values={orderedItems}
-        onReorder={setOrderedItems}
+        onReorder={handleReorder}
         className="space-y-3"
       >
         {orderedItems.map((item, index) => (
           <Reorder.Item
             key={item.id}
             value={item}
-            disabled={disabled}
+            {...(disabled ? { drag: false as const } : {})}
             className={cn(
               'group relative cursor-move rounded-lg border-2 bg-card p-4 shadow-sm transition-all',
               'hover:border-primary/50 hover:shadow-md',

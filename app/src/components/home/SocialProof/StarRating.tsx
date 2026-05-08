@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Star } from 'lucide-react';
 
 interface StarRatingProps {
@@ -66,7 +66,7 @@ export function StarRating({
     };
   });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -76,7 +76,7 @@ export function StarRating({
     },
   };
 
-  const starVariants = {
+  const starVariants: Variants = {
     hidden: { scale: 0, rotate: -180 },
     show: { scale: 1, rotate: 0 },
   };

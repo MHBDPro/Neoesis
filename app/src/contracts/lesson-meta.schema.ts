@@ -7,9 +7,9 @@ import { z } from 'zod';
 export const QuizDataSchema = z.object({
   id: z.string().regex(/^quiz-[a-z0-9-]+$/, 'Quiz ID must match format: quiz-{lesson-slug}'),
   prompt: z.string().min(10, 'Quiz prompt must be at least 10 characters'),
-  type: z.literal('single-choice', {
-    description: 'v1 supports single-choice only; multi-choice deferred to v2'
-  }),
+  type: z
+    .literal('single-choice')
+    .describe('v1 supports single-choice only; multi-choice deferred to v2'),
   options: z
     .array(z.string())
     .min(2, 'Quiz must have at least 2 options')
@@ -19,9 +19,9 @@ export const QuizDataSchema = z.object({
     .int('Correct answer index must be an integer')
     .min(0, 'Correct answer index must be >= 0'),
   explanation: z.string().min(10, 'Explanation must be at least 10 characters'),
-  maxAttempts: z.literal(3, {
-    description: 'Max attempts is always 3 (Clarification #1)'
-  })
+  maxAttempts: z
+    .literal(3)
+    .describe('Max attempts is always 3 (Clarification #1)')
 }).refine(
   data => data.correctAnswer < data.options.length,
   {

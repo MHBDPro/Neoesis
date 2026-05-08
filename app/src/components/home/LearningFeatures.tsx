@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import {
   Boxes,
@@ -68,7 +68,7 @@ export function LearningFeatures() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -78,7 +78,7 @@ export function LearningFeatures() {
     },
   };
 
-  const featureVariants = {
+  const featureVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     show: {
       opacity: 1,

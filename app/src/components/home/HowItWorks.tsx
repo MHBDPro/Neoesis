@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, Lightbulb, Trophy } from 'lucide-react';
 
@@ -46,7 +46,7 @@ export function HowItWorks() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -56,7 +56,7 @@ export function HowItWorks() {
     },
   };
 
-  const stepVariants = {
+  const stepVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: {
       opacity: 1,
